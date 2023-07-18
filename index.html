@@ -1,0 +1,1274 @@
+<html>
+<head>
+    <!-- PyScript: https://github.com/pyscript/pyscript/releases -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    <!-- Bootstrap: https://getbootstrap.com -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- local Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <py-config>
+        packages = [
+        "numpy",
+        ]
+        [[fetch]]
+        files = ["./main.py", "./starbucks_kmeans/utils.py",
+        "./starbucks_kmeans/kmeans.py","./assets/data/starbucks_drinks.csv"]
+    </py-config>
+</head>
+<body>
+    <!-- Healthy Spacing -->
+    <br>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col logo-flex-col">
+                    <img py-click="window.location.href = 'https://jtexpo.github.io'" src="../assets/images/jtexpo.png"
+                        alt="" class="logo-img">
+                    <a href="https://jtexpo.github.io" class="display-3 logo-main-text">JTexpo</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="display-4 text-center">
+                        <a href="https://www.youtube.com/@JTexpo" target="_blank" class="logo-sub-text">
+                            Content To Tr<span style="color: #F3AF56;">AI</span>n Your Skills
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Graph RNN -->
+    <main>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <!--
+                        -----------
+                        HOT COFFEES
+                        -----------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Hot Coffees</div>
+                    </div>
+                    <!-- Americano -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="americano"
+                                py-click="toggle_recommended_drink(0)">
+                            <label class="form-check-label drink-select-label" for="americano">Americano</label>
+                        </div>
+                    </div>
+                    <!-- Blonde Vanilla Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="blonde-vanilla-latte"
+                                py-click="toggle_recommended_drink(2)">
+                            <label class="form-check-label drink-select-label" for="blonde-vanilla-latte">Blonde Vanilla
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Caffe Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caffe-latte"
+                                py-click="toggle_recommended_drink(3)">
+                            <label class="form-check-label drink-select-label" for="caffe-latte">Caffe Latte</label>
+                        </div>
+                    </div>
+                    <!-- Caffe Mocha -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caffe-mocha"
+                                py-click="toggle_recommended_drink(4)">
+                            <label class="form-check-label drink-select-label" for="caffe-mocha">Caffe Mocha</label>
+                        </div>
+                    </div>
+                    <!-- Cappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="cappuccino"
+                                py-click="toggle_recommended_drink(6)">
+                            <label class="form-check-label drink-select-label" for="cappuccino">Cappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Caramel Macchiato -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caramel-macchiato"
+                                py-click="toggle_recommended_drink(9)">
+                            <label class="form-check-label drink-select-label" for="caramel-macchiato">Caramel
+                                Macchiato</label>
+                        </div>
+                    </div>
+                    <!-- Cinnamon Dolce Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="cinnamon-dolce-latte"
+                                py-click="toggle_recommended_drink(21)">
+                            <label class="form-check-label drink-select-label" for="cinnamon-dolce-latte">Cinnamon Dolce
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Dark Chocolate Mocha Reserve -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="dark-chocolate-mocha-reserve"
+                                py-click="toggle_recommended_drink(25)">
+                            <label class="form-check-label drink-select-label" for="dark-chocolate-mocha-reserve">Dark
+                                Chocolate Mocha
+                                Reserve</label>
+                        </div>
+                    </div>
+                    <!-- Drip Brew Coffee -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="drip-brew-coffee"
+                                py-click="toggle_recommended_drink(28)">
+                            <label class="form-check-label drink-select-label" for="drip-brew-coffee">Drip Brew
+                                Coffee</label>
+                        </div>
+                    </div>
+                    <!-- Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="espresso"
+                                py-click="toggle_recommended_drink(33)">
+                            <label class="form-check-label drink-select-label" for="espresso">Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Espresso Con Panna -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="espresso-con-panna"
+                                py-click="toggle_recommended_drink(34)">
+                            <label class="form-check-label drink-select-label" for="espresso-con-panna">Espresso Con
+                                Panna</label>
+                        </div>
+                    </div>
+                    <!-- Espresso Macchiato -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="espresso-macchiato"
+                                py-click="toggle_recommended_drink(36)">
+                            <label class="form-check-label drink-select-label" for="espresso-macchiato">Espresso
+                                Macchiato</label>
+                        </div>
+                    </div>
+                    <!-- Flat White -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="flat-white"
+                                py-click="toggle_recommended_drink(37)">
+                            <label class="form-check-label drink-select-label" for="flat-white">Flat White</label>
+                        </div>
+                    </div>
+                    <!-- Hazelnut Bianco Latte Reserve -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="hazelnut-bianco-latte-reserve"
+                                py-click="toggle_recommended_drink(41)">
+                            <label class="form-check-label drink-select-label"
+                                for="hazelnut-bianco-latte-reserve">Hazelnut Bianco Latte
+                                Reserve</label>
+                        </div>
+                    </div>
+                    <!-- Honey Almondmilk Flat White -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="honey-almondmilk-flat-white"
+                                py-click="toggle_recommended_drink(42)">
+                            <label class="form-check-label drink-select-label" for="honey-almondmilk-flat-white">Honey
+                                Almondmilk Flat
+                                White</label>
+                        </div>
+                    </div>
+                    <!-- Latte Reserve -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="latte-reserve"
+                                py-click="toggle_recommended_drink(75)">
+                            <label class="form-check-label drink-select-label" for="latte-reserve">Latte Reserve</label>
+                        </div>
+                    </div>
+                    <!-- White Chocolate Mocha -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="white-chocolate-mocha"
+                                py-click="toggle_recommended_drink(104)">
+                            <label class="form-check-label drink-select-label" for="white-chocolate-mocha">White
+                                Chocolate Mocha</label>
+                        </div>
+                    </div>
+                    <!--
+                        --------
+                        HOT TEAS
+                        --------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Hot Teas</div>
+                    </div>
+                    <!-- Chai Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="chai-tea"
+                                py-click="toggle_recommended_drink(13)">
+                            <label class="form-check-label drink-select-label" for="chai-tea">Chai Tea</label>
+                        </div>
+                    </div>
+                    <!-- Chai Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="chai-tea-latte"
+                                py-click="toggle_recommended_drink(14)">
+                            <label class="form-check-label drink-select-label" for="chai-tea-latte">Chai Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Earl Grey Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="earl-grey-tea"
+                                py-click="toggle_recommended_drink(29)">
+                            <label class="form-check-label drink-select-label" for="earl-grey-tea">Earl Grey Tea</label>
+                        </div>
+                    </div>
+                    <!-- Emperors Cloud & Mist -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="emperors-cloud-mist"
+                                py-click="toggle_recommended_drink(30)">
+                            <label class="form-check-label drink-select-label" for="emperors-cloud-mist">Emperors cloud
+                                & Mist</label>
+                        </div>
+                    </div>
+                    <!-- English Breakfast Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="english-breakfast-tea"
+                                py-click="toggle_recommended_drink(31)">
+                            <label class="form-check-label drink-select-label" for="english-breakfast-tea">English
+                                Breakfast Tea</label>
+                        </div>
+                    </div>
+                    <!-- English Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="english-tea-latte"
+                                py-click="toggle_recommended_drink(32)">
+                            <label class="form-check-label drink-select-label" for="english-tea-latte">English Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Honey Citrus Mint Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="honey-citrus-mint-tea"
+                                py-click="toggle_recommended_drink(43)">
+                            <label class="form-check-label drink-select-label" for="honey-citrus-mint-tea">Honey Citrus
+                                Mint Tea</label>
+                        </div>
+                    </div>
+                    <!-- Jade Citrus Mint Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="jade-citrus-mint-tea"
+                                py-click="toggle_recommended_drink(73)">
+                            <label class="form-check-label drink-select-label" for="jade-citrus-mint-tea">Jade Citrus
+                                Mint Tea</label>
+                        </div>
+                    </div>
+                    <!-- London Fog Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="london-fog-tea-latte"
+                                py-click="toggle_recommended_drink(77)">
+                            <label class="form-check-label drink-select-label" for="london-fog-tea-latte">London Fog Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Mango Black Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="mango-black-tea"
+                                py-click="toggle_recommended_drink(78)">
+                            <label class="form-check-label drink-select-label" for="mango-black-tea">Mango Black
+                                Tea</label>
+                        </div>
+                    </div>
+                    <!-- Matcha Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="matcha-tea-latte"
+                                py-click="toggle_recommended_drink(82)">
+                            <label class="form-check-label drink-select-label" for="matcha-tea-latte">Matcha Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Mint Majesty Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="mint-majesty-tea"
+                                py-click="toggle_recommended_drink(83)">
+                            <label class="form-check-label drink-select-label" for="mint-majesty-tea">Mint Majesty
+                                Tea</label>
+                        </div>
+                    </div>
+                    <!-- Peach Tranquility Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="peach-tranquility-tea"
+                                py-click="toggle_recommended_drink(88)">
+                            <label class="form-check-label drink-select-label" for="peach-tranquility-tea">Peach
+                                Tranquility Tea</label>
+                        </div>
+                    </div>
+                    <!--
+                        ----------
+                        HOT DRINKS
+                        ----------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Hot Drinks</div>
+                    </div>
+                    <!-- Caramel Apple Spice -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caramel-apple-spice"
+                                py-click="toggle_recommended_drink(7)">
+                            <label class="form-check-label drink-select-label" for="caramel-apple-spice">Caramel Apple
+                                Spice</label>
+                        </div>
+                    </div>
+                    <!-- Hot Chocolate -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="hot-chocolate"
+                                py-click="toggle_recommended_drink(44)">
+                            <label class="form-check-label drink-select-label" for="hot-chocolate">Hot Chocolate</label>
+                        </div>
+                    </div>
+                    <!-- Steamed Apple Juice -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="steamed-apple-juice"
+                                py-click="toggle_recommended_drink(93)">
+                            <label class="form-check-label drink-select-label" for="steamed-apple-juice">Steamed Apple
+                                Juice</label>
+                        </div>
+                    </div>
+                    <!-- Steamed Milk -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="steamed-milk"
+                                py-click="toggle_recommended_drink(94)">
+                            <label class="form-check-label drink-select-label" for="steamed-milk">Steamed Milk</label>
+                        </div>
+                    </div>
+                    <!-- Vanilla Creme -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="vanilla-creme"
+                                py-click="toggle_recommended_drink(99)">
+                            <label class="form-check-label drink-select-label" for="vanilla-creme">Vanilla Creme</label>
+                        </div>
+                    </div>
+                    <!-- White Hot Chocolate -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="white-hot-chocolate"
+                                py-click="toggle_recommended_drink(106)">
+                            <label class="form-check-label drink-select-label" for="white-hot-chocolate">White Hot
+                                Chocolate</label>
+                        </div>
+                    </div>
+                    <!--
+                        -----------
+                        FRAPPUCCINO
+                        -----------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Frappuccino</div>
+                    </div>
+                    <!-- Caffe Vanilla Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caffe-vanilla-frappuccino"
+                                py-click="toggle_recommended_drink(5)">
+                            <label class="form-check-label drink-select-label" for="caffe-vanilla-frappuccino">Caffe
+                                Vanilla
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Caramel Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="caramel-frappuccino"
+                                py-click="toggle_recommended_drink(8)">
+                            <label class="form-check-label drink-select-label" for="caramel-frappuccino">Caramel
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Caramel Ribbon Crunch Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="caramel-ribbon-crunch-creme-frappuccino" py-click="toggle_recommended_drink(10)">
+                            <label class="form-check-label drink-select-label"
+                                for="caramel-ribbon-crunch-creme-frappuccino">Caramel Ribbon
+                                crunch Creme Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Caramel Ribbon Crunch Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="caramel-ribbon-crunch-frappuccino" py-click="toggle_recommended_drink(11)">
+                            <label class="form-check-label drink-select-label"
+                                for="caramel-ribbon-crunch-frappuccino">Caramel Ribbon
+                                crunch Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Chai Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="chai-creme-frappuccino"
+                                py-click="toggle_recommended_drink(12)">
+                            <label class="form-check-label drink-select-label" for="chai-creme-frappuccino">Chai Creme
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Chocolate Cookie Crumble Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="chocolate-cookie-crumble-creme-frappuccino" py-click="toggle_recommended_drink(15)">
+                            <label class="form-check-label drink-select-label"
+                                for="chocolate-cookie-crumble-creme-frappuccino">Chocolate
+                                Cookie Crumble Creme Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Chocolate Java Mint Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="chocolate-java-mint-frappuccino" py-click="toggle_recommended_drink(17)">
+                            <label class="form-check-label drink-select-label"
+                                for="chocolate-java-mint-frappuccino">Chocolate Java Mint
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Chocolate Mint Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="chocolate-mint-creme-frappuccino" py-click="toggle_recommended_drink(18)">
+                            <label class="form-check-label drink-select-label"
+                                for="chocolate-mint-creme-frappuccino">Chocolate Mint Creme
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Coffee Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="coffee-frappuccino"
+                                py-click="toggle_recommended_drink(22)">
+                            <label class="form-check-label drink-select-label" for="coffee-frappuccino">Coffee
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Double Chocolaty Chip Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="double-chocolaty-chip-creme-frappuccino" py-click="toggle_recommended_drink(26)">
+                            <label class="form-check-label drink-select-label"
+                                for="double-chocolaty-chip-creme-frappuccino">Double
+                                Chocolaty Chip Creme Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Espresso Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="espresso-frappuccino"
+                                py-click="toggle_recommended_drink(35)">
+                            <label class="form-check-label drink-select-label" for="espresso-frappuccino">Espresso
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Java Chip Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="java-chip-frappuccino"
+                                py-click="toggle_recommended_drink(74)">
+                            <label class="form-check-label drink-select-label" for="java-chip-frappuccino">Java Chip
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Matcha Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="matcha-creme-frappuccino"
+                                py-click="toggle_recommended_drink(81)">
+                            <label class="form-check-label drink-select-label" for="matcha-creme-frappuccino">Matcha
+                                Creme
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Mocha Cookie Crumble Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="mocha-cookie-crumble-frappuccino" py-click="toggle_recommended_drink(84)">
+                            <label class="form-check-label drink-select-label"
+                                for="mocha-cookie-crumble-frappuccino">Mocha Cookie Crumble
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Mocha Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="mocha-frappuccino"
+                                py-click="toggle_recommended_drink(85)">
+                            <label class="form-check-label drink-select-label" for="mocha-frappuccino">Mocha
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Strawberry Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="strawberry-creme-frappuccino"
+                                py-click="toggle_recommended_drink(97)">
+                            <label class="form-check-label drink-select-label"
+                                for="strawberry-creme-frappuccino">Strawberry Creme
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- Vanilla Bean Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="vanilla-bean-creme-frappuccino"
+                                py-click="toggle_recommended_drink(98)">
+                            <label class="form-check-label drink-select-label"
+                                for="vanilla-bean-creme-frappuccino">Vanilla Bean Creme
+                                Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- White Chocolate Creme Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="white-chocolate-creme-frappuccino" py-click="toggle_recommended_drink(102)">
+                            <label class="form-check-label drink-select-label"
+                                for="white-chocolate-creme-frappuccino">White Chocolate
+                                Creme Frappuccino</label>
+                        </div>
+                    </div>
+                    <!-- White Chocolate Mocha Frappuccino -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="white-chocolate-mocha-frappuccino" py-click="toggle_recommended_drink(105)">
+                            <label class="form-check-label drink-select-label"
+                                for="white-chocolate-mocha-frappuccino">White Chocolate
+                                Mocha Frappuccino</label>
+                        </div>
+                    </div>
+                    <!--
+                        ------------
+                        COLD COFFEES
+                        ------------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Cold Coffees</div>
+                    </div>
+                    <!-- Chocolate Cream Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="chocolate-cream-cold-brew"
+                                py-click="toggle_recommended_drink(16)">
+                            <label class="form-check-label drink-select-label" for="chocolate-cream-cold-brew">Chocolate
+                                Cream Cold
+                                Brew</label>
+                        </div>
+                    </div>
+                    <!-- Cinnamon Caramel Cream Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="cinnamon-caramel-cream-cold-brew" py-click="toggle_recommended_drink(19)">
+                            <label class="form-check-label drink-select-label"
+                                for="cinnamon-caramel-cream-cold-brew">Cinnamon Caramel
+                                Cream Cold Brew</label>
+                        </div>
+                    </div>
+                    <!-- Cinnamon Caramel Cream Nitro Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="cinnamon-caramel-cream-nitro-cold-brew" py-click="toggle_recommended_drink(20)">
+                            <label class="form-check-label drink-select-label"
+                                for="cinnamon-caramel-cream-nitro-cold-brew">Cinnamon
+                                Caramel Cream Nitro Cold Brew</label>
+                        </div>
+                    </div>
+                    <!-- Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="cold-brew"
+                                py-click="toggle_recommended_drink(23)">
+                            <label class="form-check-label drink-select-label" for="cold-brew">Cold Brew</label>
+                        </div>
+                    </div>
+                    <!-- Cold Brew Coffee with Milk -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="cold-brew-coffee-with-milk"
+                                py-click="toggle_recommended_drink(24)">
+                            <label class="form-check-label drink-select-label" for="cold-brew-coffee-with-milk">Cold
+                                Brew Coffee with
+                                Milk</label>
+                        </div>
+                    </div>
+                    <!-- Iced Americano -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-americano"
+                                py-click="toggle_recommended_drink(45)">
+                            <label class="form-check-label drink-select-label" for="iced-americano">Iced
+                                Americano</label>
+                        </div>
+                    </div>
+                    <!-- Iced Blonde Vanilla Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-blonde-vanilla-latte"
+                                py-click="toggle_recommended_drink(48)">
+                            <label class="form-check-label drink-select-label" for="iced-blonde-vanilla-latte">Iced
+                                Blonde Vanilla
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Brown Sugar Oatmilk Shaken Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-brown-sugar-oatmilk-shaken-espresso" py-click="toggle_recommended_drink(49)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-brown-sugar-oatmilk-shaken-espresso">Iced Brown
+                                Sugar Oatmilk Shaken Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Iced Caffe Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-caffe-latte"
+                                py-click="toggle_recommended_drink(50)">
+                            <label class="form-check-label drink-select-label" for="iced-caffe-latte">Iced Caffe
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Chai Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-chai-tea-latte"
+                                py-click="toggle_recommended_drink(51)">
+                            <label class="form-check-label drink-select-label" for="iced-chai-tea-latte">Iced Chai Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Chocolate Almondmilk Shaken Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-chocolate-almondmilk-shaken-espresso" py-click="toggle_recommended_drink(52)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-chocolate-almondmilk-shaken-espresso">Iced
+                                Chocolate Almondmilk Shaken Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Iced Cinnamon Dolce Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-cinnamon-dolce-latte"
+                                py-click="toggle_recommended_drink(53)">
+                            <label class="form-check-label drink-select-label" for="iced-cinnamon-dolce-latte">Iced
+                                Cinnamon Dolce
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Coffee -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-coffee"
+                                py-click="toggle_recommended_drink(54)">
+                            <label class="form-check-label drink-select-label" for="iced-coffee">Iced Coffee</label>
+                        </div>
+                    </div>
+                    <!-- Iced Coffee with Milk -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-coffee-with-milk"
+                                py-click="toggle_recommended_drink(55)">
+                            <label class="form-check-label drink-select-label" for="iced-coffee-with-milk">Iced Coffee
+                                with Milk</label>
+                        </div>
+                    </div>
+                    <!-- Iced Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-espresso"
+                                py-click="toggle_recommended_drink(56)">
+                            <label class="form-check-label drink-select-label" for="iced-espresso">Iced Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Iced Flat White -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-flat-white"
+                                py-click="toggle_recommended_drink(57)">
+                            <label class="form-check-label drink-select-label" for="iced-flat-white">Iced Flat
+                                White</label>
+                        </div>
+                    </div>
+                    <!-- Iced Hazelnut Bianco Latte Reserve -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-hazelnut-bianco-latte-reserve" py-click="toggle_recommended_drink(60)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-hazelnut-bianco-latte-reserve">Iced Hazelnut
+                                Bianco Latte Reserve</label>
+                        </div>
+                    </div>
+                    <!-- Iced Honey Almondmilk Flat White -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-honey-almondmilk-flat-white" py-click="toggle_recommended_drink(61)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-honey-almondmilk-flat-white">Iced Honey Almondmilk
+                                Flat White</label>
+                        </div>
+                    </div>
+                    <!-- Iced Latte Reserve -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-latte-reserve"
+                                py-click="toggle_recommended_drink(62)">
+                            <label class="form-check-label drink-select-label" for="iced-latte-reserve">Iced Latte
+                                Reserve</label>
+                        </div>
+                    </div>
+                    <!-- Iced Shaken Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-shaken-espresso"
+                                py-click="toggle_recommended_drink(71)">
+                            <label class="form-check-label drink-select-label" for="iced-shaken-espresso">Iced Shaken
+                                Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Iced Toasted Vanilla Oatmilk Shaken Espresso -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-toasted-vanilla-oatmilk-shaken-espresso"
+                                py-click="toggle_recommended_drink(72)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-toasted-vanilla-oatmilk-shaken-espresso">Iced
+                                Toasted Vanilla Oatmilk Shaken Espresso</label>
+                        </div>
+                    </div>
+                    <!-- Nitro Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="nitro-cold-brew"
+                                py-click="toggle_recommended_drink(86)">
+                            <label class="form-check-label drink-select-label" for="nitro-cold-brew">Nitro Cold
+                                Brew</label>
+                        </div>
+                    </div>
+                    <!-- Salted Caramel Cream Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="salted-caramel-cream-cold-brew"
+                                py-click="toggle_recommended_drink(91)">
+                            <label class="form-check-label drink-select-label"
+                                for="salted-caramel-cream-cold-brew">Salted Caramel Cream
+                                Cold Brew</label>
+                        </div>
+                    </div>
+                    <!-- Vanilla Sweet Cream Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="vanilla-sweet-cream-cold-brew"
+                                py-click="toggle_recommended_drink(100)">
+                            <label class="form-check-label drink-select-label"
+                                for="vanilla-sweet-cream-cold-brew">Vanilla Sweet Cream Cold
+                                Brew</label>
+                        </div>
+                    </div>
+                    <!-- Vanilla Sweet Cream Nitro Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="vanilla-sweet-cream-nitro-cold-brew" py-click="toggle_recommended_drink(101)">
+                            <label class="form-check-label drink-select-label"
+                                for="vanilla-sweet-cream-nitro-cold-brew">Vanilla Sweet
+                                Cream Nitro Cold Brew</label>
+                        </div>
+                    </div>
+                    <!-- White Chocolate Macadamia Cream Cold Brew -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="white-chocolate-macadamia-cream-cold-brew" py-click="toggle_recommended_drink(103)">
+                            <label class="form-check-label drink-select-label"
+                                for="white-chocolate-macadamia-cream-cold-brew">White
+                                Chocolate Macadamia Cream Cold Brew</label>
+                        </div>
+                    </div>
+                    <!--
+                        ---------
+                        COLD TEAS
+                        ---------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Iced Teas</div>
+                    </div>
+                    <!-- Iced Black Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-black-tea"
+                                py-click="toggle_recommended_drink(46)">
+                            <label class="form-check-label drink-select-label" for="iced-black-tea">Iced Black
+                                Tea</label>
+                        </div>
+                    </div>
+                    <!-- Iced Black Tea Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-black-tea-lemonade"
+                                py-click="toggle_recommended_drink(47)">
+                            <label class="form-check-label drink-select-label" for="iced-black-tea-lemonade">Iced Black
+                                Tea
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Iced Green Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-green-tea"
+                                py-click="toggle_recommended_drink(58)">
+                            <label class="form-check-label drink-select-label" for="iced-green-tea">Iced Green
+                                Tea</label>
+                        </div>
+                    </div>
+                    <!-- Iced Green Tea Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-green-tea-lemonade"
+                                py-click="toggle_recommended_drink(59)">
+                            <label class="form-check-label drink-select-label" for="iced-green-tea-lemonade">Iced Green
+                                Tea
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Iced London Fog Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-london-fog-tea-latte"
+                                py-click="toggle_recommended_drink(63)">
+                            <label class="form-check-label drink-select-label" for="iced-london-fog-tea-latte">Iced
+                                London Fog Tea
+                                Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Matcha Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-matcha-lemonade"
+                                py-click="toggle_recommended_drink(64)">
+                            <label class="form-check-label drink-select-label" for="iced-matcha-lemonade">Iced Matcha
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Iced Matcha Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-matcha-tea-latte"
+                                py-click="toggle_recommended_drink(65)">
+                            <label class="form-check-label drink-select-label" for="iced-matcha-tea-latte">Iced Matcha
+                                Tea Latte</label>
+                        </div>
+                    </div>
+                    <!-- Iced Passion Tango Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-passion-tango-tea"
+                                py-click="toggle_recommended_drink(66)">
+                            <label class="form-check-label drink-select-label" for="iced-passion-tango-tea">Iced Passion
+                                Tango Tea</label>
+                        </div>
+                    </div>
+                    <!-- Iced Passion Tango Tea Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-passion-tango-tea-lemonade" py-click="toggle_recommended_drink(67)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-passion-tango-tea-lemonade">Iced Passion Tango Tea
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Iced Peach Green Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-peach-green-tea"
+                                py-click="toggle_recommended_drink(68)">
+                            <label class="form-check-label drink-select-label" for="iced-peach-green-tea">Iced Peach
+                                Green Tea</label>
+                        </div>
+                    </div>
+                    <!-- Iced Peach Green Tea Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="iced-peach-green-tea-lemonade"
+                                py-click="toggle_recommended_drink(69)">
+                            <label class="form-check-label drink-select-label" for="iced-peach-green-tea-lemonade">Iced
+                                Peach Green Tea
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Iced Royal English Breakfast Tea Latte -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="iced-royal-english-breakfast-tea-latte" py-click="toggle_recommended_drink(70)">
+                            <label class="form-check-label drink-select-label"
+                                for="iced-royal-english-breakfast-tea-latte">Iced Royal
+                                English Breakfast Tea Latte</label>
+                        </div>
+                    </div>
+                    <!-- Sparkling Unsweetened Peach Nectarine Green Tea -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="sparkling-unsweetened-peach-nectarine-green-tea"
+                                py-click="toggle_recommended_drink(92)">
+                            <label class="form-check-label drink-select-label"
+                                for="sparkling-unsweetened-peach-nectarine-green-tea">Sparkling Unsweetened Peach
+                                Green Tea</label>
+                        </div>
+                    </div>
+                    <!--
+                        -----------
+                        COLD DRINKS
+                        -----------
+                    -->
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Cold Drinks</div>
+                    </div>
+                    <!-- Blended Strawberry Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="blended-strawberry-lemonade"
+                                py-click="toggle_recommended_drink(1)">
+                            <label class="form-check-label drink-select-label" for="blended-strawberry-lemonade">Blended
+                                Strawberry
+                                Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Dragon Drink Refreshers -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="dragon-drink-refreshers"
+                                py-click="toggle_recommended_drink(27)">
+                            <label class="form-check-label drink-select-label" for="dragon-drink-refreshers">Dragon
+                                drink
+                                Refreshers</label>
+                        </div>
+                    </div>
+                    <!-- Frozen Mango Dragonfruit Lemonade  -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="frozen-mango-dragonfruit-lemonade-" py-click="toggle_recommended_drink(38)">
+                            <label class="form-check-label drink-select-label"
+                                for="frozen-mango-dragonfruit-lemonade-">Frozen Mango
+                                Dragonfruit Lemonade </label>
+                        </div>
+                    </div>
+                    <!-- Frozen Pineapple Passionfruit Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="frozen-pineapple-passionfruit-lemonade" py-click="toggle_recommended_drink(39)">
+                            <label class="form-check-label drink-select-label"
+                                for="frozen-pineapple-passionfruit-lemonade">Frozen
+                                Pineapple Passionfruit Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Frozen Strawberry Açaí Lemonade Starbucks  -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="frozen-strawberry-açaí-lemonade-starbucks-" py-click="toggle_recommended_drink(40)">
+                            <label class="form-check-label drink-select-label"
+                                for="frozen-strawberry-açaí-lemonade-starbucks-">Frozen
+                                Strawberry Açaí Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Lemonade -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="lemonade"
+                                py-click="toggle_recommended_drink(76)">
+                            <label class="form-check-label drink-select-label" for="lemonade">Lemonade</label>
+                        </div>
+                    </div>
+                    <!-- Mango Dragonfruit Lemonade Refreshers -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="mango-dragonfruit-lemonade-refreshers" py-click="toggle_recommended_drink(79)">
+                            <label class="form-check-label drink-select-label"
+                                for="mango-dragonfruit-lemonade-refreshers">Mango
+                                Dragonfruit Lemonade Refreshers</label>
+                        </div>
+                    </div>
+                    <!-- Mango Dragonfruit Refreshers -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="mango-dragonfruit-refreshers"
+                                py-click="toggle_recommended_drink(80)">
+                            <label class="form-check-label drink-select-label" for="mango-dragonfruit-refreshers">Mango
+                                Dragonfruit
+                                Refreshers</label>
+                        </div>
+                    </div>
+                    <!-- Paradise Drink -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="paradise-drink"
+                                py-click="toggle_recommended_drink(87)">
+                            <label class="form-check-label drink-select-label" for="paradise-drink">Paradise
+                                Drink</label>
+                        </div>
+                    </div>
+                    <!-- Pineapple Passionfruit -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="pineapple-passionfruit"
+                                py-click="toggle_recommended_drink(89)">
+                            <label class="form-check-label drink-select-label" for="pineapple-passionfruit">Pineapple
+                                Passionfruit</label>
+                        </div>
+                    </div>
+                    <!-- Pink Drink -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="pink-drink"
+                                py-click="toggle_recommended_drink(90)">
+                            <label class="form-check-label drink-select-label" for="pink-drink">Pink Drink</label>
+                        </div>
+                    </div>
+                    <!-- Strawberry Açaí Lemonade Refreshers -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value=""
+                                id="strawberry-açaí-lemonade-refreshers" py-click="toggle_recommended_drink(95)">
+                            <label class="form-check-label drink-select-label"
+                                for="strawberry-açaí-lemonade-refreshers">Strawberry Açaí
+                                Lemonade Refreshers</label>
+                        </div>
+                    </div>
+                    <!-- Strawberry Açaí Refreshers -->
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <input class="form-check-input" type="checkbox" value="" id="strawberry-açaí-refreshers"
+                                py-click="toggle_recommended_drink(96)">
+                            <label class="form-check-label drink-select-label"
+                                for="strawberry-açaí-refreshers">Strawberry Açaí
+                                Refreshers</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- RECOMMENDATIONS -->
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="h1 drink-cat-text">Recommendations</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <ol>
+                                <li id="recommend-1" class="h2 drink-text"></li>
+                                <li id="recommend-2" class="h2 drink-text-alt"></li>
+                                <li id="recommend-3" class="h2 drink-text"></li>
+                                <li id="recommend-4" class="h2 drink-text-alt"></li>
+                                <li id="recommend-5" class="h2 drink-text"></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="h2 drink-cat-text">Top Recommended Details</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-11">
+                            <div class="row">
+                                <div id="recommend-name" class="h3 drink-text">Name:</div>
+                            </div>
+                            <div class="row">
+                                <div id="recommend-category" class="h3 drink-text">Category:</div>
+                            </div>
+                            <div class="row">
+                                <div class="h3 drink-text">Similar Drinks:</div>
+                            </div>
+                            <div id="recommend-like" class="row"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button class="btn btn-light btn-block reset-btn" py-click="clear_drinks()">Clear
+                            Drinks</button>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </main>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="h4 footer-rights">&copy; 2023 Justin Tyler Esposito. All rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <py-script src="./main.py"></py-script>
+</body>
+</html>

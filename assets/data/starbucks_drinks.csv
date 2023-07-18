@@ -1,0 +1,108 @@
+490,is_hot,is_cold,is_frozen,calories,espresso_shots,non-coffee_ingreedients,is_coffee,is_tea,is_not_coffee_or_tea
+Americano,1,0,0,0.0306122449,1,0,1,0,0
+Blended Strawberry Lemonade,0,0,1,0.387755102,0,0.1538461538,0,0,1
+Blonde Vanilla Latte,1,0,0,0.5102040816,0.6666666667,0.5384615385,1,0,0
+Caffe Latte,1,0,0,0.387755102,0.6666666667,0.2307692308,1,0,0
+Caffe Mocha,1,0,0,0.7551020408,0.6666666667,0.6153846154,1,0,0
+Caffe Vanilla Frappuccino,0,0,1,0.8571428571,0,0.6153846154,1,0,0
+Cappuccino,1,0,0,0.2857142857,0.6666666667,0.2307692308,1,0,0
+Caramel Apple Spice,1,0,0,0.7755102041,0,0.4615384615,0,0,1
+Caramel Frappuccino,0,0,1,0.7755102041,0,0.6923076923,1,0,0
+Caramel Macchiato,1,0,0,0.5102040816,0.6666666667,0.5384615385,1,0,0
+Caramel Ribbon Crunch Creme Frappuccino,0,0,1,0.8571428571,0,0.6923076923,0,0,1
+Caramel Ribbon Crunch Frappuccino,0,0,1,0.9591836735,0,0.9230769231,1,0,0
+Chai Creme Frappuccino,0,0,1,0.693877551,0,0.3846153846,0,1,0
+Chai Tea,1,0,0,0,0,0,0,1,0
+Chai Tea Latte,1,0,0,0.4897959184,0,0.5384615385,0,1,0
+Chocolate Cookie Crumble Creme Frappuccino,0,0,1,0.9387755102,0,0.7692307692,0,0,1
+Chocolate Cream Cold Brew,0,1,0,0.5102040816,0,0.2307692308,1,0,0
+Chocolate Java Mint Frappuccino,0,0,1,1,0,0.9230769231,1,0,0
+Chocolate Mint Creme Frappuccino,0,0,1,0.9183673469,0,0.6923076923,0,0,1
+Cinnamon Caramel Cream Cold Brew,0,1,0,0.5102040816,0,0.3076923077,1,0,0
+Cinnamon Caramel Cream Nitro Cold Brew,0,1,0,0.5306122449,0,0.3076923077,1,0,0
+Cinnamon Dolce Latte,1,0,0,0.693877551,0.6666666667,0.6923076923,1,0,0
+Coffee Frappuccino,0,0,1,0.4693877551,0,0.3076923077,1,0,0
+Cold Brew,0,1,0,0.01020408163,0,0,1,0,0
+Cold Brew Coffee with Milk,0,1,0,0.07142857143,0,0.07692307692,1,0,0
+Dark Chocolate Mocha Reserve,1,0,0,0.6530612245,0.6666666667,0.2307692308,1,0,0
+Double Chocolaty Chip Creme Frappuccino,0,0,1,0.8367346939,0,0.6923076923,0,0,1
+Dragon Drink Refreshers,0,1,0,0.2653061224,0,0.1538461538,0,0,1
+Drip Brew Coffee,1,0,0,0.01020408163,0,0,1,0,0
+Earl Grey Tea,1,0,0,0,0,0,0,1,0
+Emperors Cloud Mist,1,0,0,0,0,0,0,1,0
+English Breakfast Tea,1,0,0,0,0,0,0,1,0
+English Tea Latte,1,0,0,0.306122449,0,0.5384615385,0,1,0
+Espresso,1,0,0,0.02040816327,0.6666666667,0,1,0,0
+Espresso con Panna,1,0,0,0.07142857143,0.6666666667,0.07692307692,1,0,0
+Espresso Frappuccino,0,0,1,0.4285714286,0.3333333333,0.3076923077,1,0,0
+Espresso Macchiato,1,0,0,0.0306122449,0.6666666667,0.1538461538,1,0,0
+Flat White,1,0,0,0.3469387755,0.6666666667,0.1538461538,1,0,0
+Frozen Mango Dragonfruit Lemonade ,0,0,1,0.306122449,0,0.2307692308,0,0,1
+Frozen Pineapple Passionfruit Lemonade,0,0,1,0.3265306122,0,0.2307692308,0,0,1
+Frozen Strawberry Açaí Lemonade Starbucks ,0,0,1,0.3265306122,0,0.2307692308,0,0,1
+Hazelnut Bianco Latte Reserve,1,0,0,0.7755102041,0.6666666667,0.07692307692,1,0,0
+Honey Almondmilk Flat White,1,0,0,0.2448979592,0.6666666667,0.3846153846,1,0,0
+Honey Citrus Mint Tea,1,0,0,0.2653061224,0,0.2307692308,0,1,0
+Hot Chocolate,1,0,0,0.7551020408,0,0.6923076923,0,0,1
+Iced Americano,0,1,0,0.0306122449,1,0,1,0,0
+Iced Black Tea,0,1,0,0,0,0,0,1,0
+Iced Black Tea Lemonade,0,1,0,0.1020408163,0,0.07692307692,0,1,0
+Iced Blonde Vanilla Latte,0,1,0,0.387755102,0.6666666667,0.3846153846,1,0,0
+Iced Brown Sugar Oatmilk Shaken Espresso,0,1,0,0.2448979592,1,0.4615384615,1,0,0
+Iced Caffe Latte,0,1,0,0.2653061224,0.6666666667,0.07692307692,1,0,0
+Iced Chai Tea Latte,0,1,0,0.4897959184,0,0.3846153846,0,1,0
+Iced Chocolate Almondmilk Shaken Espresso,0,1,0,0.2244897959,1,0.1538461538,1,0,0
+Iced Cinnamon Dolce Latte,0,1,0,0.612244898,0.6666666667,0.5384615385,1,0,0
+Iced Coffee,0,1,0,0.1632653061,0,0.3076923077,1,0,0
+Iced Coffee with Milk,0,1,0,0.2244897959,0,0.3846153846,1,0,0
+Iced Espresso,0,1,0,0.02040816327,0.6666666667,0,1,0,0
+Iced Flat White,0,1,0,0.306122449,1,0.07692307692,1,0,0
+Iced Green Tea,0,1,0,0,0,0,0,1,0
+Iced Green Tea Lemonade,0,1,0,0.1020408163,0,0.07692307692,0,1,0
+Iced Hazelnut Bianco Latte Reserve,0,1,0,0.5714285714,0.6666666667,0,1,0,0
+Iced Honey Almondmilk Flat White,0,1,0,0.2040816327,0.6666666667,0.3076923077,1,0,0
+Iced Latte Reserve,0,1,0,0.4285714286,0.6666666667,0.07692307692,1,0,0
+Iced London Fog Tea Latte,0,1,0,0.2857142857,0,0.3846153846,0,1,0
+Iced Matcha Lemonade,0,1,0,0.2448979592,0,0.3076923077,0,1,0
+Iced Matcha Tea Latte,0,1,0,0.4081632653,0,0.3076923077,0,1,0
+Iced Passion Tango Tea,0,1,0,0,0,0,0,1,0
+Iced Passion Tango Tea Lemonade,0,1,0,0.1020408163,0,0,0,1,0
+Iced Peach Green Tea,0,1,0,0.1224489796,0,0.07692307692,0,1,0
+Iced Peach Green Tea Lemonade,0,1,0,0.1632653061,0,0.1538461538,0,1,0
+Iced Royal English Breakfast Tea Latte,0,1,0,0.2857142857,0,0.3846153846,0,1,0
+Iced Shaken Espresso,0,1,0,0.2040816327,1,0.3846153846,1,0,0
+Iced Toasted Vanilla Oatmilk Shaken Espresso,0,1,0,0.2857142857,1,0.3846153846,1,0,0
+Jade Citrus Mint Tea,1,0,0,0,0,0,0,1,0
+Java Chip Frappuccino,0,0,1,0.8979591837,0,0.9230769231,1,0,0
+Latte Reserve,1,0,0,0.4693877551,0.6666666667,0.2307692308,1,0,0
+Lemonade,0,1,0,0.2448979592,0,0,0,0,1
+London Fog Tea Latte,1,0,0,0.3673469388,0,0.5384615385,0,1,0
+Mango Black Tea,0,1,0,0.2040816327,0,0,0,1,0
+Mango Dragonfruit Lemonade Refreshers,0,1,0,0.2857142857,0,0.07692307692,0,0,1
+Mango Dragonfruit Refreshers,0,1,0,0.1836734694,0,0.07692307692,0,0,1
+Matcha Creme Frappuccino,0,0,1,0.8571428571,0,0.6153846154,0,1,0
+Matcha Tea Latte,1,0,0,0.4897959184,0,0.4615384615,0,1,0
+Mint Majesty Tea,1,0,0,0,0,0,0,1,0
+Mocha Cookie Crumble Frappuccino,0,0,1,0.9795918367,0,1,1,0,0
+Mocha Frappuccino,0,0,1,0.7551020408,0,0.6153846154,1,0,0
+Nitro Cold Brew,0,1,0,0.01020408163,0,0,1,0,0
+Paradise Drink,0,1,0,0.2857142857,0,0.1538461538,0,0,1
+Peach Tranquility Tea,1,0,0,0,0,0,0,1,0
+Pineapple Passionfruit,0,1,0,0.2040816327,0,0.07692307692,0,0,1
+Pink Drink,0,1,0,0.2857142857,0,0.1538461538,0,0,1
+Salted Caramel Cream Cold Brew,0,1,0,0.4897959184,0,0.2307692308,1,0,0
+Sparkling Unsweetened Peach Nectarine Green Tea,0,1,0,0,0,0,0,1,0
+Steamed Apple Juice,1,0,0,0.4489795918,0,0.07692307692,0,0,1
+Steamed Milk,1,0,0,0.4081632653,0,0.2307692308,0,0,1
+Strawberry Açaí Lemonade Refreshers,0,1,0,0.2857142857,0,0.1538461538,0,0,1
+Strawberry Açaí Refreshers,0,1,0,0.2040816327,0,0.07692307692,0,0,1
+Strawberry Creme Frappuccino,0,0,1,0.7551020408,0,0.3846153846,0,0,1
+Vanilla Bean Creme Frappuccino,0,0,1,0.7755102041,0,0.3846153846,0,0,1
+Vanilla Creme,1,0,0,0.7142857143,0,0.5384615385,0,0,1
+Vanilla Sweet Cream Cold Brew,0,1,0,0.2244897959,0,0.2307692308,1,0,0
+Vanilla Sweet Cream Nitro Cold Brew,0,1,0,0.1428571429,0,0.07692307692,1,0,0
+White Chocolate Creme Frappuccino,0,0,1,0.7755102041,0,0.3846153846,0,0,1
+White Chocolate Macadamia Cream Cold Brew,0,1,0,0.4897959184,0,0.3076923077,1,0,0
+White Chocolate Mocha,1,0,0,0.8775510204,0.6666666667,0.6153846154,1,0,0
+White Chocolate Mocha Frappuccino,0,0,1,0.8571428571,0,0.6153846154,1,0,0
+White Hot Chocolate,1,0,0,0.8979591837,0,0.6153846154,0,0,1
