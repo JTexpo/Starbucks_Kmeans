@@ -90,6 +90,19 @@ BODY
     color: orange !important;
 }
 
+.info-header{
+    color: #F3AF56;
+    font-family: Alexandria-Black;
+    text-shadow: .2rem .2rem 0 #000;
+}
+
+.info-body{
+    color:#FFF;
+    font-family: Alexandria-Regular;
+    text-shadow: .1rem .1rem 0 #000;
+}
+
+
 /*
 ------
 FOOTER
